@@ -26,16 +26,13 @@ fungetuser(){
 
 funinsert(){
   alert("hiii")
-  let headers = new Headers();
-  headers.append('Authorization', btoa('username:qwertyyyu'));
-  let opts = new RequestOptions();
-  opts.headers = headers;
-  this.obj.post("userser/adduser",opts).subscribe(ad=>{
+ 
+  this.obj.post("userser/ins_cat").subscribe(ad=>{
     alert(ad)
     var imgins=<HTMLFormElement>document.getElementById("fm1")
     imgins.submit()
   })
- 
+  
 }
 /// SORTING//////
 ab=true;bc="";
@@ -62,7 +59,7 @@ search={title:""};
      
         if(imgn!="0"){
           var img={imagee:imgn}
-          this.obj.post("userser/addimg",img).subscribe(cb=>{
+          this.obj.post("userser/addimage",img).subscribe(cb=>{
             alert(cb)
           })
          

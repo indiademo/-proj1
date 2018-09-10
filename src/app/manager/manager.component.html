@@ -1,3 +1,11 @@
-<p>
-  manager works!
-</p>
+
+
+
+<form class="form-group form-inline" >
+  <div class="input-group">
+      <strong> <span class="input-group-addon">Insert category</span></strong>
+      <input id="msg" type="text" class="form-control" name="msg" placeholder="Please enter category" [(ngModel)]="txt1">
+  </div>
+<br>
+<input type="button" value="Enter" (click)=funcat_insert()  class="btn btn-default" id="enterbtn">
+</form>

@@ -3,7 +3,7 @@
 <form class="form-group" method="post"class="form-control" action="http://localhost:3000/uploads" enctype="multipart/form-data" name="frm1" id="fm1" >
   <!-- <input type="text" name="input1" [(ngModel)]="name" >
   <br> -->
-  <input type="text" name="input1" [(ngModel)]="search.id" >
+  <input type="text" name="input1" [(ngModel)]="search.title" >
   <div class="form-group col-md-3">
      
     <label for="inputPassword4">Select image</label>
@@ -15,38 +15,9 @@
 </div>
 
 
-<div  class="container" style="margin-top:90px">
+<!-- <div  class="container" style="margin-top:90px">
   <h2 (click)="funsort('id')">User details</h2>
-  <div *ngFor="let x of udata  | orderBy:bc:ab | filterBy:search" class="card">
-    <div class="card-body">{{x.userId }} --- {{x.title}}
-      <input type="button" style="float:right" value="enter" (click)=ok(x.id) class="btn btn-primary">  
-      <input type="button" style="float:right" value="enter" (click)=ok(x.id) class="btn btn-primary">  
-    </div>
-   
+  <div *ngFor="let x of udata | orderBy:bc:ab | filterBy:search" class="card">
+    <div class="card-body">{{x.userId }} --- {{x.title}}</div>
   </div>
-</div>
-<!-- <table class="table table-responsive table-hover" id="tbl" >
-  <thead class="thead-dark">
-    <tr>
-      <th>s.no</th>
-      <th>category</th>
-      <th>update /  Delete</th>
-      
-      
-    </tr>
-  </thead>
-  <tbody  *ngFor="let x of data | paginate:{itemsPerPage:8,currentPage:pno} let i = index">
-    <tr class="something">
-      <td>{{i+1}}</td>
-   
-      <td *ngIf="tmp!=x._id; else falsyTemplate">{{x.catname}}</td>
-      <td *ngIf="tmp!=x._id"><input type="button" class="btn btn-primary btn-sm" value="Update" (click)="funucatupdate(x)">
-      <input type="button" class="btn btn-sm" id="delete"value="Delete" (click)="fundelcat(x._id)">
-      <span *ngIf="x.active==1"><input type="button" class="btn btn-danger btn-sm" value="inactive" (click)="funactive(x,0)"></span>
-      <span *ngIf="x.active==0"><input type="button" class="btn btn-success btn-sm" value="active" (click)="funinactive(x,1)"></span>
-
-    
-    </tr>      
-   
-  </tbody>
-</table> -->
+</div> -->

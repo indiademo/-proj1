@@ -31,5 +31,51 @@ rout.post("/addimg",function(req,res){
 })
 
 
+rout.post("/ins_cat",function(req,res){
+    
+    ob=req.body
+   console.log(ob)
+   
+    conn.adtest.find({},{_id:1}).sort({_id:-1}).limit(1,function(err,result){
+    
+        console.log(result)
+            if (result.length==0)
+            var iid=0
+            else
+                iid=result[0]._id
+               
+                
+            
+            iid++
+       
+        console.log(iid)
+        conn.adtest.insert({_id:iid,uname:ob.uname},(err,resu)=>{
+           if(err)
+           console.log(err)
+           else
+            res.send("0")
+        })
+      
+    })
+    
+    
+    
+    })
+
+    // IMAGE 
+
+    rout.post("/addimage",function(req,res){
+        ob=req.body
+        console.log(ob)
+        conn.adtest.find().sort({_id:-1}).limit(1,function(err,result){
+            id=result[0]._id
+            conn.adtest.update({_id:id},{$set:{pimg:ob.imagee}})
+            res.send("inserted")
+           
+        })
+       
+        
+    })
+
 
 module.exports=rout;

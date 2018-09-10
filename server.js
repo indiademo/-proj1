@@ -13,10 +13,11 @@ console.log("port 3000 started")
 mj=require("mongojs")
 
 conn=mj("mongodb://localhost:27017/test")
-
+// conn=mj("mongodb://pathakabhishek:1.jaanabhi@ds021741.mlab.com:21741/demo")
 use=require("./service/userin")
 
 app.use("/userser",use)
+
 
 
 app.post("/uploads",function(req,res){
