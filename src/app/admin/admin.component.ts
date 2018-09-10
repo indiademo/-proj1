@@ -40,7 +40,7 @@ funinsert(){
 /// SORTING//////
 ab=true;bc="";
 funsort(user){
-  //alert(user)
+  alert("hiii")
   this.bc=user
   this.ab=!this.ab
   
@@ -48,9 +48,7 @@ funsort(user){
 
 search={title:""};
 //////// Filter or SEARCHING ////////
-datasearch(){
 
-}
 
   ngOnInit() {
     this.fungetuser()

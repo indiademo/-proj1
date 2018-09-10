@@ -39,12 +39,24 @@ app.post("/uploads",function(req,res){
        
     }
 
-    // var dt = new Date()
-    // dt=dt/1000
-    // iname=("img"+parseInt(dt)+"_"+iname)
-    // //iref.mv("images/"+iname)
-    // iref.mv("../src/assets/images/"+iname)
-    // res.redirect("http://localhost:4200/admin?res="+iname)
-    
-
 }) 
+
+app.get("/",function(req,res){
+    /*
+     * This pattern does NOT work!
+     */
+    //res.send(ee)
+
+    rr
+    try {
+      doSomeAsynchronousOperation((err) => {
+        if (err) {
+          throw (err);
+        }
+        /* continue as normal */
+      });
+    } catch (ex) {
+      callback(ex);
+    }
+  })
+
