@@ -8,6 +8,7 @@ rout=exp.Router()
 
 // })
 
+///GET USER DATA
 rout.get('/users', function(req, res, next) {
     // A database query that will get us any users from the collection
     conn.adtest.find(function(error, users) {
@@ -23,40 +24,48 @@ rout.post("/adduser",function(req,res){
     conn.adtest.insert({name:"abhi"})
     console.log("added")
 })
-
+///ADD IMAGE
 rout.post("/addimg",function(req,res){
    ob=req.body
    console.log(ob)
   
 })
 
-
+////ADD DATA
 rout.post("/ins_cat",function(req,res){
     
     ob=req.body
-   console.log(ob)
-   
-    conn.adtest.find({},{_id:1}).sort({_id:-1}).limit(1,function(err,result){
-    
-        console.log(result)
-            if (result.length==0)
-            var iid=0
-            else
-                iid=result[0]._id
-               
-                
-            
-            iid++
+  
+    conn.adtest.find({uname:ob.uname},function(err,resu){
        
-        console.log(iid)
-        conn.adtest.insert({_id:iid,uname:ob.uname},(err,resu)=>{
-           if(err)
-           console.log(err)
-           else
-            res.send("0")
-        })
-      
+        if(resu.length==0){
+            conn.adtest.find({},{_id:1}).sort({_id:-1}).limit(1,function(err,result){
+        
+                // console.log(result)
+                 if (result.length==0)
+                 iid=1
+                 else{
+                     iid=(result[0]._id)
+                     iid++
+     
+                 }
+             
+               //  console.log(iid)
+     
+                 conn.adtest.insert({_id:iid,uname:ob.uname},(err,resu)=>{
+                 if(err)
+                 console.log(err)
+                 else
+                     res.send("inserted")
+                 })
+             
+             })
+        }else{
+           
+            res.send("already user")
+        }
     })
+     
     
     
     
@@ -75,6 +84,20 @@ rout.post("/ins_cat",function(req,res){
         })
        
         
+    })
+///USAVE
+    rout.post("/usave",function(req,res){
+        obj=req.body
+        console.log(obj)
+       conn.adtest.update({_id:obj._id},{$set:{uname:obj.uname}})
+       res.send("updated")
+    })
+
+    rout.post("/delete",function(req,res){
+        var ob= req.body
+        conn.adtest.remove({_id:ob.id})
+        
+        res.send("deleted")
     })
 
 

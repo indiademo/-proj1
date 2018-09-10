@@ -1,11 +1,47 @@
 
 
 
-<form class="form-group form-inline" >
+<form class="form-group form-inline" #form1="ngForm">
   <div class="input-group">
       <strong> <span class="input-group-addon">Insert category</span></strong>
-      <input id="msg" type="text" class="form-control" name="msg" placeholder="Please enter category" [(ngModel)]="txt1">
+      <input id="msg" type="text" class="form-control" name="msg" placeholder="Please enter category" [(ngModel)]="txt1" required #uname="ngModel">
+      <span class="errmsj" *ngIf="(uname.touched && uname.errors && uname.errors.required) || (valied==0 && uname.errors && uname.errors.required)">enter user name</span>
+
   </div>
+
 <br>
-<input type="button" value="Enter" (click)=funcat_insert()  class="btn btn-default" id="enterbtn">
+<input type="button" value="Enter" (click)=funcat_insert(form1)  class="btn btn-default" id="enterbtn">
 </form>
+
+<div class="container">
+  <h2>Condensed Table</h2>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>id</th>
+        <th>name</th>
+        <th>update /  Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of udata let i = index" >
+        <td >{{i+1}}</td>
+        <td >{{x._id}}</td>
+        <td *ngIf="tmp!=x._id; else falsyTemplate">{{x.uname}}</td>
+        <td *ngIf="tmp!=x._id"><input type="button" class="btn btn-primary btn-sm" value="Update" (click)="funucatupdate(x)">
+          &nbsp; &nbsp; <span *ngIf="tmp!=x._id"><input type="button" class="btn btn-danger btn-sm" value="Delete" (click)="funucdel(x._id)">
+         </span>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+
+<ng-template #falsyTemplate id="temp"class="table table-responsive">
+  <td ><input type="text" class="form-control col-6" [(ngModel)]="t1"></td>
+  <td *ngIf="tmp!=0"><input type="button"class="btn btn-success btn-sm" value="save" (click)="funcatsave(x)">
+    <input type="button" value="Cancel"class="btn btn-success btn-sm" (click)="funccancel(x)">
+  </td>
+       
+</ng-template>
