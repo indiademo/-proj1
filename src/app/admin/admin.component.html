@@ -1,0 +1,23 @@
+
+<div class="container">
+<form class="form-group" method="post"class="form-control" action="http://localhost:3000/uploads" enctype="multipart/form-data" name="frm1" id="fm1" >
+  <!-- <input type="text" name="input1" [(ngModel)]="name" >
+  <br> -->
+  <input type="text" name="input1" [(ngModel)]="search.title" >
+  <div class="form-group col-md-3">
+     
+    <label for="inputPassword4">Select image</label>
+    <input type="file" name="f1" id="t7" class="form-control-file w-50" Required><br>    
+    <input type="button" value="enter" (click)=funinsert() class="btn btn-primary">  
+  </div> 
+  
+</form>
+</div>
+
+
+<div  class="container" style="margin-top:90px">
+  <h2 (click)="funsort('id')">User details</h2>
+  <div *ngFor="let x of udata | orderBy:bc:ab | filterBy:search" class="card">
+    <div class="card-body">{{x.userId }} --- {{x.title}}</div>
+  </div>
+</div>
